@@ -4,3 +4,4 @@ scikit-learn
 flask
 flask-cors
 imbalanced-learn
+gunicorn

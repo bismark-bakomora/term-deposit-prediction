@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: term-deposit-api
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: gunicorn app.api:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12
