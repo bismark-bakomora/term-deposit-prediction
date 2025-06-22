@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Bank Term Deposit Prediction</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    </head>
+
+    <body class ="bg-gradient-to-br from-blue-50 to blue-100  min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl w-full max-w-4xl">
+            <h1 class="text-3xl font-bold tes=xt-center text-blue-700 mb-6 flex items-center justify-center">
+                <i class="ph ph-banking text-3xl mr-2"></i> Term Deposit Predictor
+            </h1>
+
+            <form id="predictForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block font-medium"><i class="ph ph-user mr-1"></i>Age</label>
+                    <input type="number" name="age" class="input-field" required />
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-briefcaase mr-1"></i>Job</label>
+                    <select name="job" class="input-field">
+                        <option>admin.</option>
+                        <option>technician</option>
+                        <option>services</option>
+                        <option>management</option>
+                        <option>retired</option>
+                        <option>blue-collar</option>
+                        <option>unemployed</option>
+                        <option>entrepreneur</option>
+                        <option>self-employed</option>
+                        <option>housemaid</option>
+                        <option>student</option>
+                        <option>unknown</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-users-three mr-1"></i>Marital Status</label>
+                    <select name="marital" class="input-field" required>
+                        <option value="married">Married</option>
+                        <option value="single">Single</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-graduation-cap mr-1"></i>Education</label>
+                    <select name="education" class="input-field">
+                        <option>basic.4y</option>
+                        <option>basic.6y</option>
+                        <option>basic.9y</option>
+                        <option>high.school</option>
+                        <option>professional.course</option>
+                        <option>university.degree</option>
+                        <option>illiterate</option>
+                        <option>unknown</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-credit-card mr-1"></i>Default Credit?</label>
+                    <div class="flex gap-4">
+                        <label><input type="radio" name="default" value="yes" required>Yes</label>
+                        <label><input type="radio" name="default" value="no">No</label>
+                        <label><input type="radio" name="default" value="unknown">Unknown</label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-house mr-1"></i>Has Housing Loan?</label>
+                    <div class="flex gap-4">
+                        <label><input type="radio" name="housing" value="yes" required>Yes</label>
+                        <label><input type="radio" name="housing" value="no">No</label>
+                        <label><input type="radio" name="housing" value="unknown">Unknown</label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-wallet mr-1">Personal Loan</i></label>
+                    <div class="flex gap-4">
+                        <label><input type="radio" name="loan" value="yes" required>Yes</label>
+                        <label><input type="radio" name="loan" value="no">No</label>
+                        <label><input type="radio" name="loan" value="unknown">Unknown</label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-phone mr-1"></i>Contact Type</label>
+                    <select name="contact" class="input-field">
+                        <option>cellular</option>
+                        <option>telephone</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-calender-blank mr-1"></i>Month</label>
+                    <select name="month" class="input-field">
+                        <option>jan</option>
+                        <option>feb</option>
+                        <option>mar</option>
+                        <option>apr</option>
+                        <option>may</option>
+                        <option>jun</option>
+                        <option>jul</option>
+                        <option>aug</option>
+                        <option>sep</option>
+                        <option>oct</option>
+                        <option>nov</option>
+                        <option>dec</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-calender-week mr-1"></i>Day of Week</label>
+                    <select name="day_of_week" class="input-field">
+                        <option>mon</option>
+                        <option>tue</option>
+                        <option>wed</option>
+                        <option>thu</option>
+                        <option>fri</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-clock mr-1"></i>Duration (seconds)</label>
+                    <input type="number" name="duration" class="input-field" required />
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-chat-centered-text mr-1"></i>Campaign Contacts</label>
+                    <input type="number" name="campaign" class="input-field" required />
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-clock-counter-clockwise mr-1"></i>Days Since Last Contact</label>
+                    <input type="number" name="pdays" class="input-field" required/>
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-repeat mr-1"></i>Previous Contacts</label>
+                    <input type="number" name="previous" class="input-field" required />
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-check-circle mr-1"></i>Previous Outcome</label>
+                    <select name="poutcome" class="input-field">
+                        <option>success</option>
+                        <option>failure</option>
+                        <option>nonexistent</option>
+                        <option>unknown</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-trend-up mr-1"></i>Employment Variation Rate</label>
+                    <input type="number" step="any" name="emp.var.rate" class="input-field" required />
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-tag mr-1"></i>Consumer Price Index</label>
+                    <input type="number" step="any" name="cons.price.idx" class="input-field" required />
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-thumbs-down mr-1"></i>Consumer Confidence Index</label>
+                    <input type="number" step="any" name="cons.conf.idx" class="input-field" required />
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-bank mr-1"></i>Euribor 3 Month Rate</label>
+                    <input type="number" step="any" name="euribor3m" class="input-field" required />
+                </div>
+
+                <div>
+                    <label class="block font-medium"><i class="ph ph-users-three mr-1"></i>Number of Employees</label>
+                    <input type="number" step="any" name="nr.employed" class="input-field" required />
+                </div>
+
+                <div class="md:col-span-2 flex justify-center">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold shadow">
+                        Predict Subscription
+                    </button>
+                </div>
+            </form>
+
+            <div id="spinner" class="mt-6 text-center hidden animate-pulse text-blue-700 font-medium">Processing...</div>
+            <div id="result" class="mt-6 hidden text-center"></div>
+        </div>
+
+        <script>
+            const form = document.getElementById("predictForm");
+            const spinner = document.getElementById("spinner");
+            const result = document.getElementById("result");
+
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                spinner.classList.remove("hidden");
+                result.classList.add("hidden");
+
+                const formData = new FormData(form);
+                const data = {};
+                formData.forEach((val, key) => data[key] = isNaN(val) ? val : Number(val));
+
+                const res = await fetch ("http://127.0.0.1:5000/predict", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify(data),
+                });
+
+                const {prediction} = await res.json();
+
+                spinner.classList.add("hidden");
+                result.classList.remove("hidden");
+                result.innerHTML =prediction === 1
+                    ? '<div class="bg-green-100 text-green-800 p-4 rounded-xl shadow animate-fade-in"> The client is likely to subscribe to a term deposit.</div>'
+                    : '<div class="bg-red-100 text-red-800 p-4 rounded-xl shadow animate-fade-in">The client is unlikely to subscribe to a term deposit.</div>';
+            });
+        </script>
+
+        <style>
+            .input-field {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #cbd5e1;
+                border-radius: 10px;
+                background-color: #fefafc;
+            }
+
+            @keyframes fade-in {
+                from { opacity: 0;}
+                to { opacity: 1;}
+            }
+            .animate-fade-in {
+                animation: fade-in 0.7s ease-in-out;
+            }
+        </style>
+    </body>
+</html>
