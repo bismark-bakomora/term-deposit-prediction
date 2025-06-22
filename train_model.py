@@ -1,5 +1,3 @@
-# train_model.py
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -47,10 +45,10 @@ print("ROC AUC Score:", roc_auc_score(y_test, y_pred))
 # Create model directory if not exist
 os.makedirs('model', exist_ok=True)
 
-# Save model
+# Saving model
 with open('model/model.pkl', 'wb') as f:
     pickle.dump(model, f)
 
-# Save feature names
+# Saving feature names
 with open('model/features.json', 'w') as f:
     json.dump(list(X.columns), f)
