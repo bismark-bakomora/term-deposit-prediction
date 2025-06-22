@@ -4,15 +4,27 @@ import pickle
 import pandas as pd
 import os
 import json
+import requests
 
 app = Flask(__name__)
 CORS(app)
 
-# Load model
-with open("model/model.pkl", 'rb') as f:
+
+MODEL_URL = "https://github.com/bismark-bakomora/term-deposit-prediction/releases/tag/v1.0/model.pkl"
+MODEL_PATH = "model/model.pkl"
+
+if not os.path.exists(MODEL_PATH):
+    os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
+    print("Downloading model...")
+    r = requests.get(MODEL_URL)
+    with open(MODEL_PATH, 'wb') as f:
+        f.write(r.content)
+
+# Loading model
+with open(MODEL_PATH, 'rb') as f:
     model = pickle.load(f)
 
-# Load feature names
+# Loading feature names
 with open("model/features.json", 'r') as f:
     feature_names = json.load(f)
 
@@ -25,7 +37,7 @@ def predict():
     data = request.json
     df = pd.DataFrame([data])
 
-    # Ensure consistent features
+    # Ensuring consistent features
     df = pd.get_dummies(df)
     for col in feature_names:
         if col not in df:
