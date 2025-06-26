@@ -10,13 +10,14 @@ app = Flask(__name__)
 CORS(app)
 
 
-MODEL_URL = "https://github.com/bismark-bakomora/term-deposit-prediction/releases/tag/v1.0/model.pkl"
+MODEL_URL = "https://github.com/bismark-bakomora/term-deposit-prediction/releases/download/v1.0/model.pkl"
 MODEL_PATH = "model/model.pkl"
 
 if not os.path.exists(MODEL_PATH):
     os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
     print("Downloading model...")
-    r = requests.get(MODEL_URL)
+    r = requests.get(MODEL_URL, timeout =30)
+    r.raise_for_status() 
     with open(MODEL_PATH, 'wb') as f:
         f.write(r.content)
 
@@ -48,4 +49,4 @@ def predict():
     return jsonify({'prediction': int(prediction)})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
